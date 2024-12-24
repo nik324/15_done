@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Форма</title>
+</head>
+<body>
+    <form method='post'>
+        <!-- Три поля для ввода -->
+        <label for="lat"> Широта:</label>
+        <input type='text' id = 'lat' name='lat' required><br><br>
+
+        <label for="lon"> Долгота:</label>
+        <input type='text' id = 'lon' name='lon' required><br><br>
+
+        <label for="name">Название точки:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <!-- Две кнопки -->
+        <button type="submit">Отправить</button>
+        <button type="button" onclick="addFields()">Добавить ещё точку</button>
+        <br>
+    </form>
+
+     <script>
+        function addFields() {
+            const form = document.querySelector('form');
+
+            // Добавляем новые поля с названиями
+            const fields = [
+                {label: "Широта точки:", name: "latitude"},
+                {label: "Долгота точки:", name: "longitude"},
+                {label: "Название точки:", name: "pointName"}
+            ];
+
+            fields.forEach(field => {
+                form.appendChild(document.createElement('br'));
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.name = field.name;
+                form.appendChild(label);
+                form.appendChild(input);
+                form.appendChild(document.createElement('br'));
+            });
+        }
+    </script>
+</body>
+</html>
